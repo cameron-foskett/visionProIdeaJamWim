@@ -3,10 +3,6 @@ import RealityKit
 import RealityKitContent
 import MapKit
 
-var header = "Header"
-
-
-
 struct ContentView: View {
     
     struct MapView: UIViewRepresentable {
