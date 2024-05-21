@@ -83,7 +83,7 @@ struct ContentView: View {
                         .cornerRadius(10)
                 })
                 NavigationLink(destination: {
-                    view2()
+                    view3()
                 }, label: {
 
                     Text("Security Management")
@@ -237,6 +237,53 @@ struct view2: View{
                 .edgesIgnoringSafeArea(.all)
         }
         .navigationTitle("Premise Management & Security")
+        .padding()
+        
+        
+        
+    }
+}
+
+struct view3: View{
+    
+    @Environment(\.isPresented) var isPresented
+    
+    @Environment(\.dismiss) var dismiss
+    
+    @State private var speed = 30.0
+    @State private var isEditing = false
+
+    var body: some View {
+        if isPresented {
+            
+            Button(action: {
+                
+                dismiss()
+                
+            }, label: {
+                
+                Text("Back")
+                
+            })
+            
+            
+        }
+        VStack {
+            Slider(
+                value: $speed,
+                in: 0...60,
+                step: 3,
+                onEditingChanged: { editing in
+                    isEditing = editing
+                }
+            )
+            Text("Minute \(round(speed))")
+                .foregroundColor(isEditing ? .red : .blue)
+            Image("Screen 5")
+                .resizable()
+                .frame(width: 800, height: 500)
+        }
+        .navigationTitle("Security Management")
         .padding()
         
         
